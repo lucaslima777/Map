@@ -1,14 +1,18 @@
 package lln.map;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final String TAG = "MAP - ";
 
     private Map<Integer, String> map = new HashMap<>();
 
@@ -18,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setInitialMap();
+
+        testMapEntry();
 
     }
 
@@ -49,4 +55,16 @@ public class MainActivity extends AppCompatActivity {
         map.put(25, "Y");
         map.put(26, "Z");
     }
+
+    private void testMapEntry() {
+        Set set = map.entrySet();
+        Iterator iterator = set.iterator();
+
+        while (iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            Log.d(TAG + "testMapEntry", entry.getKey() + " : " + entry.getValue());
+        }
+
+    }
+
 }
